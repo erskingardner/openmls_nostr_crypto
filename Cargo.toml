@@ -1,0 +1,25 @@
+[workspace]
+members = ["openmls_nostr_crypto", "hpke_rs_nostr_crypto"]
+resolver = "2"
+
+[workspace.dependencies]
+aes-gcm = { version = "0.10", default-features = false }
+chacha20poly1305 = { version = "0.10", default-features = false }
+digest = "0.10"
+ed25519-dalek = "2.0"
+hkdf = "0.12"
+hmac = "0.12"
+hpke = { version = "0.2.0", package = "hpke-rs", git = "https://github.com/erskingardner/hpke-rs", branch = "update-kem-algos", default-features = false, features = [
+    "hazmat",
+    "serialization",
+] } # TODO: Remove depency on my fork of hpke-rs
+rand = "0.8"
+rand_chacha = "0.3"
+secp256k1 = { version = "0.29", features = ["rand-std", "hashes-std"] }
+sha2 = { version = "0.10", default-features = false }
+thiserror = "1.0"
+tls_codec = { version = "0.4.2-pre.1", features = [
+    "derive",
+    "serde",
+    "mls",
+], git = "https://github.com/rustcrypto/formats" }

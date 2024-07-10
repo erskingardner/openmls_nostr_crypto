@@ -1,0 +1,30 @@
+[package]
+name = "openmls_nostr_crypto"
+authors = ["Jeff Gardner <j@jeffg.me>"]
+documentation = "https://docs.rs/openmls-nostr-crypto"
+description = "Nostr's implementation of the OpenMLS traits"
+readme = "README.md"
+license = "MIT"
+version = "0.1.0"
+edition = "2021"
+keywords = ["cryptography", "crypto", "MLS", "OpenMLS", "Nostr"]
+categories = ["cryptography", "nostr"]
+
+[dependencies]
+openmls_memory_storage = { path = "../../openmls/memory_storage", version = "0.2.0" }                                                             # TODO: REMOVE LOCAL DEPENDENCIES
+openmls_traits = { path = "../../openmls/traits", version = "0.2.0" }                                                                             # TODO: REMOVE LOCAL DEPENDENCIES
+hpke-rs-crypto = { version = "0.2.0", package = "hpke-rs-crypto", git = "https://github.com/erskingardner/hpke-rs", branch = "update-kem-algos" }
+hpke_rs_nostr_crypto = { path = "../hpke_rs_nostr_crypto", version = "0.1.0" }                                                                    # TODO: REMOVE LOCAL DEPENDENCIES
+
+# Workspace dependencies
+aes-gcm = { workspace = true }
+chacha20poly1305 = { workspace = true }
+ed25519-dalek = { workspace = true, features = ["rand_core"] }
+hkdf = { workspace = true }
+hpke = { workspace = true }
+rand = { workspace = true }
+rand_chacha = { workspace = true }
+secp256k1 = { workspace = true }
+sha2 = { workspace = true }
+thiserror = { workspace = true }
+tls_codec = { workspace = true }

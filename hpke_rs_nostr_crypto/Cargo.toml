@@ -1,0 +1,27 @@
+[package]
+name = "hpke_rs_nostr_crypto"
+authors = ["Jeff Gardner <j@jeffg.me>"]
+documentation = "https://docs.rs/hpke_rs_nostr_crypto"
+description = "Nostr's implementation of the hpke-rs-crypto traits"
+readme = "README.md"
+license = "MIT"
+version = "0.1.0"
+edition = "2021"
+keywords = ["cryptography", "crypto", "HPKE", "Nostr"]
+categories = ["cryptography", "nostr"]
+
+
+[dependencies]
+hpke-rs-crypto = { version = "0.2.0", package = "hpke-rs-crypto", git = "https://github.com/erskingardner/hpke-rs", branch = "update-kem-algos" }
+x25519-dalek = { version = "2", features = ["static_secrets"] }
+
+# Workspace dependencies
+aes-gcm = { workspace = true, default-features = false, features = ["aes"] }
+chacha20poly1305 = { workspace = true, default-features = false, features = [
+    "alloc",
+] }
+sha2 = { default-features = false, workspace = true }
+secp256k1 = { workspace = true }
+hkdf = { workspace = true }
+digest = { workspace = true }
+rand_chacha = { workspace = true }
