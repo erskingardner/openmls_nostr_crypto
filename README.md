@@ -18,9 +18,7 @@ Read more about the MLS ciphersuites in the [spec here](https://www.rfc-editor.o
 - [x] MLS_128_DHKEMX25519_AES128GCM_SHA256_Ed25519 (Required by MLS spec)
 - [x] MLS_256_DHKEMK256_CHACHA20POLY1305_SHA256_K256 (Nostr specific)
 
-The `MLS_256_DHKEMK256_CHACHA20POLY1305_SHA256_K256` ciphersuite is a custom/private ciphersuite that isn't part of the official spec. To use these crates you'll need to .... 
-
-TODO
+The `MLS_256_DHKEMK256_CHACHA20POLY1305_SHA256_K256` ciphersuite is a custom/private ciphersuite that isn't part of the official spec. This repo is a work in progress while adding the secp256k1 curve to various dependent libraries and the upstream OpenMLS library itself.
 
 ## NIP-104
 
