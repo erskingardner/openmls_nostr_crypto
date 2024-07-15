@@ -9,7 +9,7 @@ use openmls_traits::OpenMlsProvider;
 mod crypto;
 pub use crypto::*;
 
-#[derive(Default)]
+#[derive(Default, Debug)]
 pub struct NostrProvider {
     crypto: crypto::NostrCrypto,
     rand: crypto::NostrCrypto,

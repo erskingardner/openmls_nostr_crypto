@@ -23,6 +23,7 @@ use std::sync::RwLock;
 use tls_codec::SecretVLBytes;
 
 /// The `NostrCrypto` struct represents the cryptographic module used in the OpenMLS Nostr project.
+#[derive(Debug)]
 pub struct NostrCrypto {
     rng: RwLock<rand_chacha::ChaCha20Rng>,
 }
@@ -294,7 +295,10 @@ impl OpenMlsCrypto for NostrCrypto {
                 let secp = Secp256k1::new();
                 let xok =
                     XOnlyPublicKey::from_slice(pk).map_err(|_| CryptoError::CryptoLibraryError)?;
-                let message = Message::from_digest_slice(data)
+                let digest = self
+                    .hash(HashType::Sha2_256, data)
+                    .map_err(|_| CryptoError::CryptoLibraryError)?;
+                let message = Message::from_digest_slice(&digest)
                     .map_err(|_| CryptoError::CryptoLibraryError)?;
                 let sig = Signature::from_slice(signature)
                     .map_err(|_| CryptoError::CryptoLibraryError)?;
